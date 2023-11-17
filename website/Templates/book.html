@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Booking Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      .separator {
+        margin-top: 20px;
+        border-top: 2px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="POST">
+      <div class="container mt-5">
+        <!-- Part 1: Own Details -->
+        <div class="own-details">
+          <h2>Own Details</h2>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="ownName" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ownName"
+                name="ownName"
+                placeholder="Your Name"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="ownPhoneNumber" class="form-label"
+                >Phone Number</label
+              >
+              <input
+                type="tel"
+                class="form-control"
+                id="ownPhoneNumber"
+                name="ownPhoneNumber"
+                placeholder="Your Phone Number"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="ownEmail" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="ownEmail"
+                name="ownEmail"
+                placeholder="Your Email Address"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="ownCountry" class="form-label">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="ownCountry"
+                name="ownCountry"
+                placeholder="Your Country"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="ownContactDetails" class="form-label"
+                >Contact Details</label
+              >
+              <textarea
+                class="form-control"
+                id="ownContactDetails"
+                name="ownContactDetails"
+                rows="3"
+                placeholder="Additional Contact Details"
+              ></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="roomId" class="form-label">Room ID</label>
+              <input
+                type="text"
+                class="form-control"
+                id="roomId"
+                name="roomId"
+                placeholder="Enter Room ID"
+              />
+            </div>
+          </div>
+          <div class="separator"></div>
+        </div>
+
+        <!-- Part 2: Guest Details -->
+        <div class="guest-details">
+          <h2>Guest Details</h2>
+          <div id="guests-container">
+            <!-- Guest details will be dynamically added here using JavaScript -->
+          </div>
+          <button type="button" class="btn btn-primary" onclick="addGuest()">
+            Add Guest
+          </button>
+          <div class="separator"></div>
+        </div>
+
+        <!-- Part 3: Payment & Billing -->
+        <div class="payment-billing">
+          <h2>Payment & Billing</h2>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="paymentMethod" class="form-label"
+                >Payment Method</label
+              >
+              <select
+                class="form-select"
+                id="paymentMethod"
+                name="paymentMethod"
+              >
+                <option selected disabled>Select payment method</option>
+                <option value="card">Credit Card</option>
+                <option value="cash">Cash</option>
+                <option value="bKash">bKash</option>
+                <option value="nagad">Nagad</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="amount" class="form-label">Amount</label>
+              <input
+                type="number"
+                class="form-control"
+                id="amount"
+                name="amount"
+                placeholder="Enter Amount"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="voucher" class="form-label">Voucher</label>
+              <input
+                type="text"
+                class="form-control"
+                id="voucher"
+                name="voucher"
+                placeholder="Enter Voucher Code"
+              />
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="guestCount" name="guestCount" value="0" />
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+      </div>
+    </form>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // JavaScript for dynamically adding guests
+      let guestCount = 1;
+
+      function addGuest() {
+        const guestsContainer = document.getElementById("guests-container");
+        const newGuestDiv = document.createElement("div");
+        newGuestDiv.className = "row mb-3";
+        newGuestDiv.innerHTML = `
+          <div class="col-md-6">
+            <label for="guestName${guestCount}" class="form-label">Guest Name</label>
+            <input type="text" class="form-control" id="guestName${guestCount}" name="guestName${guestCount}" placeholder="Guest Name">
+          </div>
+          <div class="col-md-6">
+            <label for="guestID${guestCount}" class="form-label">NID/Passport Number</label>
+            <input type="text" class="form-control" id="guestID${guestCount}" name="guestID${guestCount}" placeholder="NID/Passport Number">
+          </div>
+        `;
+
+        guestsContainer.appendChild(newGuestDiv);
+        guestCount++;
+        document.getElementById("guestCount").value = guestCount;
+      }
+    </script>
+  </body>
+</html>
