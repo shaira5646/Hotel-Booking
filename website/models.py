@@ -9,3 +9,28 @@ class Rooms(db.Model):
     room_size = db.Column(db.String(150), nullable=False, default='Room Size')
     room_price = db.Column(db.Integer, nullable=False, default=0)
     room_view_images = db.Column(db.String(150), nullable=False, default='Room View Images')
+
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    own_name = db.Column(db.String(50))
+    own_phone_number = db.Column(db.String(15))
+    own_email = db.Column(db.String(50), unique=True, nullable=False)
+    own_country = db.Column(db.String(50))
+    own_contact_details = db.Column(db.String(255))
+    room_id = db.Column(db.String(20))
+    payments = db.relationship('Payment', backref='booking', lazy=True)
+    guests = db.relationship('Guest', backref='booking', lazy=True)
+
+class Payment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    payment_method = db.Column(db.String(20))
+    amount = db.Column(db.Float)
+    voucher = db.Column(db.String(50))
+    booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)
+
+class Guest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    guest_name = db.Column(db.String(50))
+    guest_id = db.Column(db.String(20))
+    booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)
+    
