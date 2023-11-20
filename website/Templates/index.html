@@ -106,6 +106,22 @@
         box-shadow: none;
         transform: translateY(0);
       }
+      .btn-custom {
+      background-color: #ff5733;
+      color: #ffffff;
+      border-color: #ff5733;
+    }
+
+
+    .btn-custom:hover {
+      background-color: #e64a19;
+      border-color: #e64a19;
+    }
+
+    .btn-custom:active {
+      background-color: #cc3d14;
+      border-color: #cc3d14;
+    }
     </style>
   </head>
 
@@ -122,9 +138,6 @@
 
           <div class="button">
             <a href="{{url_for('views.search')}}" class="button-28">Search</a>
-          </div>
-          <div class="button">
-            <a href="{{url_for('views.book')}}" class="button-28">Book</a>
           </div>
         </div>
       </div>
