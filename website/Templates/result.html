@@ -67,10 +67,11 @@
           <td>{{ room.room_type }}</td>
           <td>{{ room.room_size }}</td>
           <td>{{ room.room_price }}</td>
-          <td>
+         <td>
             <a href="/room/{{ room.room_id }}" class="btn btn-primary"
               >View</a
             >
+            <a href="{{url_for('views.book')}}" class="btn btn-custom">Book</a>
           </td>
         </tr>
         {% endfor %}
