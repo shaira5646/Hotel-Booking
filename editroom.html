@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10vh;
+        }
+
+        form {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            margin-top: 15px;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Edit Room</h1>
+        <form method="POST">
+            <label for="room_name">Room Name:</label>
+            <input type="text" id="room_name" name="room_name" value="{{ room.room_name }}" class="form-control" required>
+
+            <label for="room_type">Room Type:</label>
+            <input type="text" id="room_type" name="room_type" value="{{ room.room_type }}" class="form-control" required>
+
+            <label for="room_size">Room Size:</label>
+            <input type="text" id="room_size" name="room_size" value="{{ room.room_size }}" class="form-control" required>
+
+            <label for="room_price">Room Price:</label>
+            <input type="number" id="room_price" name="room_price" value="{{ room.room_price }}" class="form-control" required>
+
+            <label for="room_view_images">Room View Images:</label>
+            <input type="text" id="room_view_images" name="room_view_images" value="{{ room.room_view_images }}" class="form-control" required>
+
+            <button type="submit" class="btn btn-primary">Update Room</button>
+        </form>
+        <a href="{{ url_for('views.managerooms')}}" class="btn btn-secondary">Go Back</a>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</body>
+</html>
