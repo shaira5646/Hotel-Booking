@@ -18,6 +18,7 @@ class Booking(db.Model):
     own_country = db.Column(db.String(50))
     own_contact_details = db.Column(db.String(255))
     room_id = db.Column(db.String(20))
+    booking_date = db.Column(db.DateTime, default=func.now())
     payments = db.relationship('Payment', backref='booking', lazy=True)
     guests = db.relationship('Guest', backref='booking', lazy=True)
 
