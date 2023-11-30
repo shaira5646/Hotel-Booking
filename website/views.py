@@ -5,7 +5,9 @@ from flask import url_for
 from . import db
 from .models import Rooms, Payment, Guest, Booking
 import random
-views = Blueprint('views', __name__, template_folder='templates/home', static_folder='assets')
+from faker import Faker
+views = Blueprint('views', __name__,
+                  template_folder='templates/home', static_folder='assets')
 
 rooms = None
 
@@ -25,6 +27,7 @@ def book():
         own_country = request.form.get('ownCountry')
         own_contact_details = request.form.get('ownContactDetails')
         room_id = request.form.get('roomId')
+        bookingDate = request.form.get('bookingDate')
 
         guests = []
         guest_count = int(request.form.get('guestCount'))
@@ -45,7 +48,8 @@ def book():
             own_country=own_country,
             own_contact_details=own_contact_details,
             room_id=room_id,
-            guests=guests
+            guests=guests,
+            booking_date=bookingDate
         )
 
         # Add payment details
@@ -88,11 +92,12 @@ def search():
 def result():
     rooms = request.args.get('rooms')  # Get rooms from the query parameters
     # get all rooms from room id
-    if rooms: 
+    if rooms:
         rooms = Rooms.query.filter(Rooms.room_id.in_(rooms.split(','))).all()
         return render_template('result.html', rooms=rooms)
-    else: 
+    else:
         return render_template('result.html', rooms=None)
+
 
 @views.route('/room/<int:room_id>', methods=['GET', 'POST'])
 def room(room_id):
@@ -100,7 +105,64 @@ def room(room_id):
     room_name = room.room_name
     room_image = f"http://127.0.0.1:5000/assets/images/{room.room_view_images}"
     print(room)
-    return render_template('room.html', room_image = room_image, room_name = room_name)
+    return render_template('room.html', room_image=room_image, room_name=room_name)
+
+
+@views.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    return render_template('dashboard.html')
+
+
+@views.route('/managerooms', methods=['GET', 'POST'])
+def managerooms():
+    rooms = Rooms.query.all()
+    return render_template('managerooms.html', rooms=rooms)
+
+
+@views.route('/managebooking', methods=['GET', 'POST'])
+def managebooking():
+    bookings = Booking.query.all()
+    return render_template('managebooking.html', bookings=bookings)
+
+
+@views.route('/edit_booking/<int:booking_id>', methods=['GET', 'POST'])
+def editbooking(booking_id):
+    booking = Booking.query.get(booking_id)
+
+    if request.method == 'POST':
+        booking.own_name = request.form.get('own_name')
+        booking.own_phone_number = request.form.get('own_phone_number')
+        booking.own_email = request.form.get('own_email')
+        booking.own_country = request.form.get('own_country')
+        booking.own_contact_details = request.form.get('own_contact_details')
+        booking.room_id = request.form.get('room_id')
+        booking.booking_date = request.form.get('booking_date')
+
+        db.session.commit()
+        return redirect(url_for('views.managebooking'))
+
+    return render_template('editbooking.html', booking=booking)
+
+
+@views.route('/edit_room/<int:room_id>', methods=['GET', 'POST'])
+def edit_room(room_id):
+    room = Rooms.query.get_or_404(room_id)
+
+    if request.method == 'POST':
+        # Update room details based on the form data
+        room.room_name = request.form['room_name']
+        room.room_type = request.form['room_type']
+        room.room_size = request.form['room_size']
+        room.room_price = request.form['room_price']
+        room.room_view_images = request.form['room_view_images']
+
+        # Commit the changes to the database
+        db.session.commit()
+
+        # redirect to same page
+        return redirect(url_for('views.edit_room', room_id=room_id))
+
+    return render_template('editroom.html', room=room)
 
 
 @views.route('/populate', methods=['GET', 'POST'])
@@ -117,6 +179,25 @@ def populate():
             room_view_images=f"image_{random.randint(0,8)}.jpg"
         )
         db.session.add(room)
+
+    db.session.commit()
+    print("Populated")
+    return redirect(url_for('views.index'))
+
+
+@views.route('populatebooking', methods=['GET', 'POST'])
+def populatebooking():
+    fake = Faker()
+    for _ in range(10):
+        booking = Booking(
+            own_name=fake.name(),
+            own_phone_number=fake.phone_number(),
+            own_email=fake.email(),
+            own_country="USA",
+            own_contact_details=fake.address(),
+            room_id=str(random.randint(1, 10))  # Assuming you have 10 rooms
+        )
+        db.session.add(booking)
 
     db.session.commit()
     print("Populated")
