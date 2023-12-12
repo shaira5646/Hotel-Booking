@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 07:04 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Dec 12, 2023 at 06:05 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,16 +43,26 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`id`, `own_name`, `own_phone_number`, `own_email`, `own_country`, `own_contact_details`, `room_id`, `booking_date`) VALUES
-(1, 'Johnny Wise', '452-431-7021x42', 'jenniferscott@example.com', 'USA', '0773 Mcmillan Throughway\nNew Mackenzie, MO 19367', '2', '2023-11-28 23:46:58'),
-(2, 'Sierra Griffin', '(728)774-1564', 'sroy@example.net', 'USA', '2879 Daniel Crossing\nLewisfort, CT 07083', '4', '2023-11-28 23:46:58'),
-(3, 'Angela Wallace', '6728958144', 'joelcooper@example.com', 'USA', '2880 Ayala Mountains Apt. 162\nNorth William, LA 39478', '2', '2023-11-28 23:46:58'),
-(4, 'Stanley Osborne', '(403)972-4537', 'fhudson@example.net', 'USA', '49695 Foley Track Suite 699\nAguilarhaven, PA 38279', '10', '2023-11-28 23:46:58'),
-(5, 'Adam Wyatt', '633.213.7635', 'melissa45@example.org', 'USA', '630 Robinson Shoals Apt. 581\nMichealstad, WI 09652', '3', '2023-11-28 23:46:58'),
-(6, 'Katie Simmons', '488-854-4604x23', 'amandastephens@example.com', 'USA', '56269 Barbara Forges Apt. 057\nNew Michael, KS 55004', '9', '2023-11-28 23:46:58'),
-(7, 'Holly Hines', '001-366-530-972', 'juanday@example.net', 'USA', '95594 Lee Garden\nEast Shelbyberg, PR 92929', '2', '2023-11-28 23:46:58'),
-(8, 'Michael Kelly', '001-519-994-003', 'paulmitchell@example.com', 'USA', 'USNS Phillips\nFPO AE 21675', '1', '2023-11-28 23:46:58'),
-(9, 'Ryan Garcia', '(270)835-9366x0', 'annettekerr@example.net', 'USA', '5732 Cunningham Plaza Suite 869\nKellerburgh, CO 07340', '1', '2023-11-28 23:46:58'),
-(10, 'Christopher Grant', '001-849-577-385', 'vickienguyen@example.org', 'USA', '90593 Elizabeth Fort\nNorth Brett, LA 15368', '3', '2023-11-28 23:46:58');
+(1, 'Maria Walker', '001-903-657-753', 'smithkelly@example.com', 'USA', '9996 Turner Bridge Apt. 432\nFryhaven, HI 25883', '10', '2023-12-12 15:46:49'),
+(2, 'Jonathan Sellers', '(352)626-3038', 'martinapril@example.com', 'USA', '9255 Baker Tunnel\nPort Carlaland, CA 66046', '8', '2023-12-12 15:46:49'),
+(3, 'Rickey Carr', '989-338-3429x83', 'jnichols@example.org', 'USA', '94638 John Inlet\nJamesmouth, DE 42292', '1', '2023-12-12 15:46:49'),
+(4, 'Jeremy Wilson', '(888)728-2521x1', 'jensenmonica@example.com', 'USA', '07326 Dalton Neck Suite 566\nNorth Sarah, UT 61128', '9', '2023-12-12 15:46:49'),
+(5, 'Angela Mcmahon', '(882)512-8817x8', 'cweaver@example.org', 'USA', '108 Gabrielle Manor\nEast Brandonborough, OR 35673', '8', '2023-12-12 15:46:49'),
+(6, 'Adam Hatfield', '(258)643-2518x6', 'benjaminhuang@example.org', 'USA', '40977 Henson Courts\nNew Natalie, SD 89526', '3', '2023-12-12 15:46:49'),
+(7, 'Richard Lambert', '+1-495-447-4447', 'matthewreeves@example.org', 'USA', '810 Cook Circle Apt. 105\nNew Lori, PA 72599', '10', '2023-12-12 15:46:49'),
+(8, 'Ronald Cortez', '919-208-7024', 'greenpamela@example.com', 'USA', '1954 Cindy Spring Apt. 081\nLake Allisonshire, RI 95313', '4', '2023-12-12 15:46:49'),
+(9, 'Katherine Brown', '379.297.7355x21', 'dennisdavis@example.net', 'USA', '6775 Holt Meadows Apt. 425\nSarafort, RI 16637', '3', '2023-12-12 15:46:49'),
+(10, 'Brian Manning', '290-890-1690', 'nguyenjessica@example.org', 'USA', '744 Wilkinson Track\nNorth Robert, IA 51474', '7', '2023-12-12 15:46:49'),
+(11, 'Bryan Collins', '910-310-0796', 'lisa27@example.com', 'USA', '097 Hill Center\nLake Tommy, SD 45727', '1', '2023-12-12 15:46:49'),
+(12, 'Curtis Gibson', '(448)262-2001x9', 'iford@example.com', 'USA', '1460 Whitney View\nAnthonyberg, AK 24105', '4', '2023-12-12 15:46:49'),
+(13, 'Michael Martin', '746.734.5948x83', 'nward@example.net', 'USA', '696 Garcia Court Suite 293\nDonport, DE 84931', '2', '2023-12-12 15:46:49'),
+(14, 'Samantha Brown', '918.322.1085x78', 'david46@example.com', 'USA', '55384 Jaime Run\nWest Kellyburgh, NC 56193', '7', '2023-12-12 15:46:49'),
+(15, 'David Barrera', '+1-267-691-3529', 'jonesmichael@example.net', 'USA', '910 Colin Spurs Apt. 669\nNew Kelsey, AL 80608', '9', '2023-12-12 15:46:49'),
+(16, 'James Bell', '(701)679-3286x3', 'angelawilcox@example.org', 'USA', '974 Anne Motorway Suite 328\nPort Melvinview, NV 80814', '4', '2023-12-12 15:46:49'),
+(17, 'Nicholas Harper', '(277)260-5171', 'alexanderwhite@example.net', 'USA', '04064 Dawn Shoal Suite 184\nSouth Erin, CA 08945', '1', '2023-12-12 15:46:49'),
+(18, 'Carla Walter', '438.826.0494x99', 'durhamjohn@example.net', 'USA', '4010 Johnson Cape Apt. 287\nWatsonburgh, ME 22150', '6', '2023-12-12 15:46:49'),
+(19, 'Stacey Kent DVM', '+1-356-340-1877', 'amandamartinez@example.org', 'USA', '767 Merritt Radial\nJacquelineborough, DE 18798', '9', '2023-12-12 15:46:49'),
+(20, 'Nancy Stone', '(847)924-6573x4', 'jonescrystal@example.net', 'USA', '2465 Chris Club Suite 319\nAustinmouth, AZ 25685', '10', '2023-12-12 15:46:49');
 
 -- --------------------------------------------------------
 
@@ -67,6 +77,22 @@ CREATE TABLE `guest` (
   `booking_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `guest`
+--
+
+INSERT INTO `guest` (`id`, `guest_name`, `guest_id`, `booking_id`) VALUES
+(1, 'Amy Rivera', '660-91-6430', 6),
+(2, 'Joy Webster', '021-96-7175', 8),
+(3, 'William Stanton', '097-27-8439', 5),
+(4, 'Richard Miller', '818-88-7009', 1),
+(5, 'Jordan Welch', '726-66-8294', 5),
+(6, 'Sean Williams', '646-43-5639', 9),
+(7, 'Kimberly Reyes', '547-27-3943', 9),
+(8, 'Kathy Williams', '526-38-7041', 2),
+(9, 'Jeffrey Rosario', '843-77-5235', 10),
+(10, 'Stephanie Garrett', '078-10-2017', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -80,6 +106,40 @@ CREATE TABLE `payment` (
   `voucher` varchar(50) DEFAULT NULL,
   `booking_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `guest_id` int(11) DEFAULT NULL,
+  `content` varchar(1000) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`id`, `room_id`, `guest_id`, `content`, `status`, `created_at`) VALUES
+(3, 5, 1, 'blah blah blah', 'Pending', '2023-12-12 16:10:03'),
+(4, 1, 1, 'Couple board also structure laugh tell. Smile its meet wish assume full box recently.', 'Pending', '2023-12-12 17:04:07'),
+(5, 8, 10, 'Face feeling major summer say three cup. Face billion thing opportunity until upon.', 'Pending', '2023-12-12 17:04:07'),
+(6, 8, 3, 'Low newspaper more result art upon difficult value.', 'Pending', '2023-12-12 17:04:07'),
+(7, 7, 4, 'Media experience serious crime. Describe such wife either exist heavy during. Above left power once fear move bring.', 'Pending', '2023-12-12 17:04:07'),
+(8, 4, 7, 'After very employee mean. Industry or third onto collection charge.', 'Pending', '2023-12-12 17:04:07'),
+(9, 8, 8, 'Instead doctor science discussion discussion share program tend. Step leader glass stock doctor rich. Back at plant.', 'Pending', '2023-12-12 17:04:07'),
+(10, 5, 8, 'Memory toward open discover risk start both kitchen.', 'Pending', '2023-12-12 17:04:07'),
+(11, 4, 5, 'Career ground see get. Represent agree prepare treat agree. That animal give.', 'Pending', '2023-12-12 17:04:07'),
+(12, 7, 8, 'Same herself environment exactly special commercial.', 'Pending', '2023-12-12 17:04:07'),
+(13, 2, 10, 'Amount both son understand become painting. Growth live avoid affect sure. Single country full room their father quite defense.', 'Pending', '2023-12-12 17:04:07'),
+(14, 4, 1, 'Nice', 'Pending', '2023-12-12 17:20:26'),
+(15, 8, 1, 'Not big enough', 'Pending', '2023-12-12 17:22:36');
 
 -- --------------------------------------------------------
 
@@ -170,6 +230,14 @@ ALTER TABLE `payment`
   ADD KEY `booking_id` (`booking_id`);
 
 --
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `room_id` (`room_id`),
+  ADD KEY `guest_id` (`guest_id`);
+
+--
 -- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
@@ -183,19 +251,25 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -218,6 +292,13 @@ ALTER TABLE `guest`
 --
 ALTER TABLE `payment`
   ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking` (`id`);
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`room_id`),
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `guest` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
