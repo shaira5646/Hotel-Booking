@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Status</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .room-container {
+            margin: 20px 0;
+        }
+        .room {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .booked {
+            background-color: #f8d7da;
+        }
+        .unbooked {
+            background-color: #d4edda;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .room-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .booked { background-color: #f8d7da; }
+        .unbooked { background-color: #d4edda; }
+        .room-details { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h3>Room Reviews:</h3>
+    <table id="review-table" class="display" style="width: 100%">
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>Room Name</th>
+                <th>Review</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review.room.room_id }}</td>
+                <td>{{ review.room.room_name }}</td>
+                <td>{{ review.content }}</td>
+                <td>{{ review.status }}</td>
+                <td>
+                    <a href="{{ url_for('views.approve_review', review_id=review.id) }}" class="btn btn-custom2">Approve</a>
+                    <a href="{{ url_for('views.reject_review', review_id=review.id) }}" class="btn btn-custom">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#review-table').DataTable({
+                scrollY: '50vh',
+                scrollCollapse: true,
+            });
+        });
+    </script>
+</body>
+</html>

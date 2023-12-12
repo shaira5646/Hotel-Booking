@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- [Head Content] -->
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Reviews</h2>
+        <table class="table">
+            <!-- Table headers -->
+            <tbody>
+                {% for review in reviews %}
+                <tr>
+                    <!-- Review details -->
+                    <td>
+                        <a href="{{ url_for('views.approve_review', review_id=review.id) }}" class="btn btn-success">Approve</a>
+                        <a href="{{ url_for('views.delete_review', review_id=review.id) }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

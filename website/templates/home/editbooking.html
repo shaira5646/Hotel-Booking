@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Booking</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="mb-4">Edit Booking</h1>
+    <form method="POST">
+        <label for="own_name">Name:</label>
+        <input type="text" id="own_name" name="own_name" value="{{ booking.own_name }}" class="form-control" required>
+        <label for="booking_date">Date:</label>
+        <input type="text" id="booking_date" name="booking_date" value="{{ booking.booking_date }}" class="form-control" required>
+
+        <label for="own_phone_number">Phone Number:</label>
+        <input type="text" id="own_phone_number" name="own_phone_number" value="{{ booking.own_phone_number }}" class="form-control" required>
+
+        <label for="own_email">Email:</label>
+        <input type="email" id="own_email" name="own_email" value="{{ booking.own_email }}" class="form-control" required>
+
+        <label for="own_country">Country:</label>
+        <input type="text" id="own_country" name="own_country" value="{{ booking.own_country }}" class="form-control" required>
+
+        <label for="own_contact_details">Contact Details:</label>
+        <textarea id="own_contact_details" name="own_contact_details" class="form-control" required>{{ booking.own_contact_details }}</textarea>
+
+        <label for="room_id">Room ID:</label>
+        <input type="text" id="room_id" name="room_id" value="{{ booking.room_id }}" class="form-control" required>
+
+        <button type="submit" class="btn btn-primary mt-3">Update Booking</button>
+        <a href="{{ url_for('views.managebooking') }}" class="btn btn-secondary mt-3">Go Back</a>
+    </form>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</body>
+</html>

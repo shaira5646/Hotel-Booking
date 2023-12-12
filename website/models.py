@@ -9,6 +9,8 @@ class Rooms(db.Model):
     room_size = db.Column(db.String(150), nullable=False, default='Room Size')
     room_price = db.Column(db.Integer, nullable=False, default=0)
     room_view_images = db.Column(db.String(150), nullable=False, default='Room View Images')
+    room_view_images2 = db.Column(db.String(150), nullable=False, default='Room View Images2')
+
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +23,6 @@ class Booking(db.Model):
     booking_date = db.Column(db.DateTime, default=func.now())
     payments = db.relationship('Payment', backref='booking', lazy=True)
     guests = db.relationship('Guest', backref='booking', lazy=True)
-
 class Payment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     payment_method = db.Column(db.String(20))
@@ -34,4 +35,17 @@ class Guest(db.Model):
     guest_name = db.Column(db.String(50))
     guest_id = db.Column(db.String(20))
     booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)
-    
+
+
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    room_id = db.Column(db.Integer, db.ForeignKey(
+        'rooms.room_id'), nullable=True)
+    guest_id = db.Column(db.Integer, db.ForeignKey('guest.id'), nullable=True)
+    content = db.Column(db.String(1000), nullable=True)
+    # Options: Pending, Approved, Rejected
+    status = db.Column(db.String(50), default='Pending')
+    created_at = db.Column(db.DateTime, default=func.now())
+
+    room = db.relationship('Rooms', backref='reviews')
+    guest = db.relationship('Guest', backref='reviews')

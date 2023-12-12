@@ -14,7 +14,7 @@ def create_app():
                 template_folder='templates',
                 )
     app.config['SECRET_KEY'] = '@DoE2D2212!!@dsseSDE'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root@localhost/test"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://root@localhost/hotel_booking"
 
     db.init_app(app)
     migrate = Migrate(app, db)
@@ -25,7 +25,7 @@ def create_app():
 
     app.register_blueprint(views, url_prefix='/')
 
-    from .models import Rooms
+    from .models import Rooms, Payment, Guest, Booking, Review
     
     with app.app_context():
         db.create_all()

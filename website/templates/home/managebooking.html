@@ -1,0 +1,57 @@
+<!-- allbookings.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Add your custom styles here if needed -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">All Bookings</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Owner Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Contact Details</th>
+                    <th scope="col">Room ID</th>
+                    <!-- Add columns for payments and guests as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <th scope="row">{{ booking.id }}</th>
+                        <td>{{ booking.booking_date }}</td>
+                        <td>{{ booking.own_name }}</td>
+                        <td>{{ booking.own_phone_number }}</td>
+                        <td>{{ booking.own_email }}</td>
+                        <td>{{ booking.own_country }}</td>
+                        <td>{{ booking.own_contact_details }}</td>
+                        <td>{{ booking.room_id }}</td>
+                        <td>
+                        <a href="{{ url_for('views.editbooking', booking_id=booking.id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                        </td>
+                        <!-- Add columns for payments and guests as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
